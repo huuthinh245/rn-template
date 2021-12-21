@@ -1,19 +1,27 @@
 import {createStore, applyMiddleware, compose, Store} from 'redux';
 import {combineEpics, createEpicMiddleware} from 'redux-observable';
+import {ActionType} from 'typesafe-actions';
 import {combineReducers} from 'redux';
-import {auth, authEpic} from './Authentication';
-import {AuthState} from './Authentication/types';
+import {actions, auth, authEpic} from './authentication';
+import {AuthState} from './authentication/types';
+export type ActionsType = ActionType<typeof actions>;
 
-const epicMiddleware = createEpicMiddleware();
 declare global {
   interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: Function;
   }
 }
 
 export interface IRootState {
   auth: AuthState;
 }
+const epicMiddleware = createEpicMiddleware<
+  ActionsType,
+  ActionsType,
+  IRootState
+>({
+  // dependencies: API,
+});
 
 const rootReducer = combineReducers({
   auth,

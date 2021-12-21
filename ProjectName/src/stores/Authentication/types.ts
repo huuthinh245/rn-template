@@ -1,12 +1,8 @@
+import {Action} from 'redux';
 export enum LoginType {
   start = 'LOGIN-START',
   success = 'LOGIN-SUCCESS',
   error = 'LOGIN-ERROR',
-}
-export enum LogoutType {
-  start = 'LOGOUT-START',
-  success = 'LOGOUT-SUCCESS',
-  error = 'LOGOUT-ERROR',
 }
 
 export interface AuthState {
@@ -27,36 +23,17 @@ export interface UserData {
   roles: Array<string>;
   ssoId: string;
 }
-export interface Login {
+export interface Login extends Action {
   type: LoginType.start;
   payload: {authorcode: string};
 }
-export interface LoginError {
+export interface LoginError extends Action {
   type: LoginType.error;
   payload: {message: string};
 }
-export interface LoginSuccess {
+export interface LoginSuccess extends Action {
   type: LoginType.success;
   payload: {data: UserData};
 }
 
-export interface Logout {
-  type: LogoutType.start;
-  payload: {authorcode: string};
-}
-export interface LogoutError {
-  type: LogoutType.error;
-  payload: {message: string};
-}
-export interface LogoutSuccess {
-  type: LogoutType.success;
-  payload: {data: UserData};
-}
-
-export type AuthAction =
-  | Login
-  | LoginError
-  | LoginSuccess
-  | Logout
-  | LogoutError
-  | LogoutSuccess;
+export type AuthAction = Login | LoginError | LoginSuccess;

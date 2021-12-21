@@ -5,8 +5,9 @@ import {actions} from '../action/actions';
 import GHNAPI from '../api';
 import {AuthAction, LoginType} from '../types';
 import {isOfType} from 'typesafe-actions';
+import {IRootState} from 'stores';
 
-const loginUserT62Epic: Epic<AuthAction> = action$ =>
+const loginUserT62Epic: Epic<AuthAction, AuthAction, IRootState> = action$ =>
   action$.pipe(
     filter(isOfType(LoginType.start)),
     map(action => action.payload),
@@ -19,7 +20,6 @@ const loginUserT62Epic: Epic<AuthAction> = action$ =>
               const {userInfo, session = ''} = response.data[0];
               if (userInfo.hasOwnProperty('roles')) {
                 let roles = userInfo.roles;
-                let isDriverPermission = true;
                 const {
                   profile = {
                     email: '',
@@ -28,18 +28,14 @@ const loginUserT62Epic: Epic<AuthAction> = action$ =>
                   },
                   ssoId = '',
                 } = userInfo;
-                if (isDriverPermission) {
-                  return actions.loginSuccess({
-                    email: profile.email,
-                    hubId: '2294',
-                    token: session ?? '',
-                    username: profile.fullname,
-                    roles: roles?.[0]?.permissionList ?? [],
-                    ssoId: ssoId,
-                  });
-                } else {
-                  return actions.loginError('Bạn không có quyền thao tác');
-                }
+                return actions.loginSuccess({
+                  email: profile.email,
+                  hubId: '2294',
+                  token: session ?? '',
+                  username: profile.fullname,
+                  roles: roles?.[0]?.permissionList ?? [],
+                  ssoId: ssoId,
+                });
               } else {
                 return actions.loginError('Bạn không có quyền thao tác');
               }

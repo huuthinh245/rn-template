@@ -1,5 +1,6 @@
+import Config from 'react-native-config';
 const API = {
-  URL: '',
+  URL: Config.API,
 };
 
 export {API};

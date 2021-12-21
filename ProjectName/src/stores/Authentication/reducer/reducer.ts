@@ -1,4 +1,4 @@
-import {AuthAction, AuthState, LoginType, LogoutType} from '../types';
+import {AuthAction, AuthState, LoginType} from '../types';
 
 const defaultState: AuthState = {
   loading: false,
@@ -37,8 +37,6 @@ const authentication = (
         error: action.payload.message,
         loading: false,
       };
-    case LogoutType.start:
-      return state;
     default:
       return state;
   }

@@ -7,10 +7,10 @@ import {
 } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {navigationRef} from './RootNavigation';
-import HomeScreen from '../container/HomeScreen';
-import LoginScreen from '../container/LoginScreen';
-import SplashScreen from '../container/SplashScreen';
-import stores from '../stores';
+import HomeScreen from '@container/HomeScreen';
+import LoginScreen from '@container/LoginScreen';
+import SplashScreen from '@container/SplashScreen';
+import stores from '@stores';
 import {Provider} from 'react-redux';
 import {BottomTabParamList, RootStackParamList} from 'screens';
 
@@ -80,7 +80,7 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
-export default function Router() {
+const Router = () => {
   const onStateChange = (state: NavigationState | undefined) => {
     console.log(state);
   };
@@ -95,4 +95,5 @@ export default function Router() {
       </NavigationContainer>
     </Provider>
   );
-}
+};
+export default Router;
