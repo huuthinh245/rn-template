@@ -2,8 +2,8 @@ import {createStore, applyMiddleware, compose, Store} from 'redux';
 import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import {ActionType} from 'typesafe-actions';
 import {combineReducers} from 'redux';
-import {actions, auth, authEpic} from './authentication';
-import {AuthState} from './authentication/types';
+import {actions, auth, authEpic} from './auth';
+import {AuthState} from './auth/types';
 export type ActionsType = ActionType<typeof actions>;
 
 declare global {
