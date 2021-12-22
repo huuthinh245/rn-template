@@ -19,7 +19,8 @@
     "build-stg": "cd android && ENVFILE=.env.staging ./gradlew assemblestagingRelease",
     "build-window-stg": "cd android && gradlew assemblestagingRelease",
     "build-prd": "cd android && ENVFILE=.env.production  ./gradlew assembleproductionRelease",
-    "build-window-prd": "cd android && gradlew assembleproductionRelease"
+    "build-window-prd": "cd android && gradlew assembleproductionRelease",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "^0.2.6",
