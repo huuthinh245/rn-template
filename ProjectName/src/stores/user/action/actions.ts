@@ -1,19 +1,19 @@
 import {action} from 'typesafe-actions';
 import {Login, LoginError, LoginSuccess, LoginType, UserData} from '../types';
 
-const login = ({authorcode = ''}: {authorcode: string}): Login =>
-  action(LoginType.start, {authorcode: authorcode});
+const login = ({username = ''}: {username: string}): Login =>
+	action(LoginType.start, {username: username});
 
 const loginSuccess = (userInfo: UserData): LoginSuccess =>
-  action(LoginType.success, {data: userInfo});
+	action(LoginType.success, {data: userInfo});
 
 const loginError = (message: string = ''): LoginError =>
-  action(LoginType.error, {message: message});
+	action(LoginType.error, {message: message});
 
 const actions = {
-  login,
-  loginSuccess,
-  loginError,
+	login,
+	loginSuccess,
+	loginError,
 };
 
 export {actions};

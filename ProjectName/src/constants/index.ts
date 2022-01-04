@@ -1,6 +1,3 @@
-import Config from 'react-native-config';
-const API = {
-  URL: Config.API,
-};
+import {API} from './api';
 
 export {API};

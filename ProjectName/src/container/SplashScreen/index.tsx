@@ -3,11 +3,11 @@ import {View, Text} from 'react-native';
 import {styles} from './styles';
 
 const LoginScreen: FunctionComponent = () => {
-  return (
-    <View style={styles.container}>
-      <Text>LoginScreen</Text>
-    </View>
-  );
+	return (
+		<View style={styles.container}>
+			<Text>LoginScreen</Text>
+		</View>
+	);
 };
 
 LoginScreen.defaultProps = {};

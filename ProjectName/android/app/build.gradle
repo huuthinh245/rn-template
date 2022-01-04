@@ -1,14 +1,14 @@
 apply plugin: "com.android.application"
-apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 import com.android.build.OutputFile
 project.ext.envConfigFiles = [
-//         release: ".env.production",
-//         debug: ".env",
-        productionRelease: ".env.production",
-        productionDebug: ".env.production",
-        stagingRelease: ".env.staging",
-        stagingDebug: ".env.staging"
+    release: "env.prod",
+    debug: "env.prod",
+    prodRelease: ".env.prod",
+    prodDebug: ".env.prod",
+    stagingRelease: ".env.staging",
+    stagingDebug: ".env.staging"
 ]
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).

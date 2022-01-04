@@ -2,11 +2,11 @@ import * as React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {NavigationContainer, NavigationState} from '@react-navigation/native';
 import {
-  CardStyleInterpolators,
-  createStackNavigator,
+	CardStyleInterpolators,
+	createStackNavigator,
 } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {navigationRef} from './RootNavigation';
+import {navigationRef} from '@navigation/RootNavigation';
 import HomeScreen from '@container/HomeScreen';
 import LoginScreen from '@container/LoginScreen';
 import SplashScreen from '@container/SplashScreen';
@@ -34,66 +34,68 @@ const Tab = createBottomTabNavigator<BottomTabParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
 
 const Tabs = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        lazy: true,
-      }}>
-      <Tab.Screen name="HomeScreen" component={HomeScreen} />
-    </Tab.Navigator>
-  );
+	return (
+		<Tab.Navigator
+			screenOptions={{
+				headerShown: false,
+				lazy: true,
+			}}>
+			<Tab.Screen name="HomeScreen" component={HomeScreen} />
+		</Tab.Navigator>
+	);
 };
 
 const SCREENS = {
-  SplashScreen: {
-    title: 'SplashScreen',
-    component: SplashScreen,
-  },
-  LoginScreen: {
-    title: 'LoginScreen',
-    component: LoginScreen,
-  },
-  BottomTab: {
-    title: 'BottomTab',
-    component: Tabs,
-  },
+	SplashScreen: {
+		title: 'SplashScreen',
+		component: SplashScreen,
+	},
+	LoginScreen: {
+		title: 'LoginScreen',
+		component: LoginScreen,
+	},
+	BottomTab: {
+		title: 'BottomTab',
+		component: Tabs,
+	},
 };
 
 function MyStack() {
-  return (
-    <Stack.Navigator
-      initialRouteName="LoginScreen"
-      screenOptions={{
-        headerShown: false,
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        gestureEnabled: true,
-      }}>
-      {(Object.keys(SCREENS) as (keyof typeof SCREENS)[]).map(name => (
-        <Stack.Screen
-          key={name}
-          name={name}
-          getComponent={() => SCREENS[name].component}
-          options={{title: SCREENS[name].title}}
-        />
-      ))}
-    </Stack.Navigator>
-  );
+	return (
+		<Stack.Navigator
+			initialRouteName="LoginScreen"
+			screenOptions={{
+				headerShown: false,
+				cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+				gestureEnabled: true,
+			}}>
+			{(Object.keys(SCREENS) as (keyof typeof SCREENS)[]).map(name => (
+				<Stack.Screen
+					key={name}
+					name={name}
+					getComponent={() => SCREENS[name].component}
+					options={{title: SCREENS[name].title}}
+				/>
+			))}
+		</Stack.Navigator>
+	);
 }
 const Router = () => {
-  const onStateChange = (state: NavigationState | undefined) => {
-    console.log(state);
-  };
-  return (
-    <Provider store={stores}>
-      <NavigationContainer ref={navigationRef} onStateChange={onStateChange}>
-        <SafeAreaProvider>
-          <>
-            <MyStack />
-          </>
-        </SafeAreaProvider>
-      </NavigationContainer>
-    </Provider>
-  );
+	const onStateChange = (state: NavigationState | undefined) => {
+		console.log(state);
+	};
+	return (
+		<Provider store={stores}>
+			<NavigationContainer
+				ref={navigationRef}
+				onStateChange={onStateChange}>
+				<SafeAreaProvider>
+					<>
+						<MyStack />
+					</>
+				</SafeAreaProvider>
+			</NavigationContainer>
+		</Provider>
+	);
 };
 export default Router;

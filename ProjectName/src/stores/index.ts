@@ -2,29 +2,28 @@ import {createStore, applyMiddleware, compose, Store} from 'redux';
 import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import {ActionType} from 'typesafe-actions';
 import {combineReducers} from 'redux';
-import {actions, auth, authEpic} from './auth';
-import {AuthState} from './auth/types';
-export type ActionsType = ActionType<typeof actions>;
+import {actions, user, authEpic} from './user';
+import {AuthState} from './user/types';
+const mergeAction = {
+	...actions,
+};
+export type ActionsType = ActionType<typeof mergeAction>;
 
 declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: Function;
-  }
+	interface Window {
+		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__: Function;
+	}
 }
 
 export interface IRootState {
-  auth: AuthState;
+	user: AuthState;
 }
-const epicMiddleware = createEpicMiddleware<
-  ActionsType,
-  ActionsType,
-  IRootState
->({
-  // dependencies: API,
+const epicMiddleware = createEpicMiddleware<ActionsType, any, IRootState>({
+	// dependencies: API,
 });
 
 const rootReducer = combineReducers({
-  auth,
+	user,
 });
 
 const rootEpic = combineEpics(authEpic);
@@ -37,12 +36,12 @@ const rootEpic = combineEpics(authEpic);
 //const finalReducer = persistReducer(config, {reducers})
 
 const composeEnhancers =
-  (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ as typeof compose) || compose;
+	(window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ as typeof compose) || compose;
 const enhancer = composeEnhancers(
-  applyMiddleware(
-    epicMiddleware,
-    // ...middlewares
-  ),
+	applyMiddleware(
+		epicMiddleware,
+		// ...middlewares
+	),
 );
 const store: Store<IRootState, any> = createStore(rootReducer, enhancer);
 epicMiddleware.run(rootEpic);

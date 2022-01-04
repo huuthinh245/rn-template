@@ -10,25 +10,25 @@
 'use strict';
 
 module.exports = {
-  preset: 'react-native',
-  timers: 'fake',
-  testRegex: '/__tests__/.*-test\\.tsx$',
-  testPathIgnorePatterns: ['/node_modules/'],
-  transformIgnorePatterns: [
-    'node_modules/(?!(jest-)?react-native' +
-      '|@react-native-community' +
-      '|@react-navigation' +
-      '|native-base' +
-      '|expo-.*/.*' +
-      '|@unimodules' +
-      '|@react-native-picker' +
-      '|@react-native' +
-      '/)',
-  ],
-  haste: {
-    defaultPlatform: 'ios',
-    platforms: ['ios', 'android'],
-  },
-  testEnvironment: 'node',
-  coveragePathIgnorePatterns: ['/__tests__/'],
+	preset: 'react-native',
+	timers: 'fake',
+	testRegex: '/__tests__/.*-test\\.tsx$',
+	testPathIgnorePatterns: ['/node_modules/'],
+	transformIgnorePatterns: [
+		'node_modules/(?!(jest-)?react-native' +
+			'|@react-native-community' +
+			'|@react-navigation' +
+			'|native-base' +
+			'|expo-.*/.*' +
+			'|@unimodules' +
+			'|@react-native-picker' +
+			'|@react-native' +
+			'/)',
+	],
+	haste: {
+		defaultPlatform: 'ios',
+		platforms: ['ios', 'android'],
+	},
+	testEnvironment: 'node',
+	coveragePathIgnorePatterns: ['/__tests__/'],
 };
