@@ -3,9 +3,9 @@ import axios, {
 	AxiosRequestHeaders,
 	AxiosResponse,
 } from 'axios';
-import {API} from '@constants/api';
-import {Logger} from './Logger';
-import {prefix, APIs} from './APIs';
+import { API } from '@constants/api';
+import { Logger } from './Logger';
+import { prefix, APIs, APIS_TYPE, Params } from './APIs';
 const timeout = 15000;
 const instance = axios.create();
 
@@ -36,11 +36,11 @@ instance.interceptors.response.use(
 	},
 );
 class ApiEndPoint {
-	static type: keyof APIs.Params;
+	static type: keyof APIS_TYPE;
 	static timeout = 15000;
-	static params: {[key: string]: any};
+	static params: { [key: string]: any };
 	static getPrefix() {
-		return prefix[this.type];
+		return prefix[this.type].path;
 	}
 	static getBaseURL(): string {
 		switch (ApiEndPoint.type) {
@@ -67,7 +67,7 @@ class ApiEndPoint {
 			case APIs.Profile.upload_image:
 				return {
 					'Content-Type': 'multipart/form-data',
-					Accept: 'application/json',
+					'Accept': 'application/json',
 				};
 			default:
 				return {
@@ -94,7 +94,7 @@ class ApiEndPoint {
 	}
 }
 
-const post = <T extends keyof APIs.Params, P extends APIs.Params[T]>(
+const post = <T extends keyof Params, P extends Params[T]>(
 	action: T,
 	param: P,
 ) => {
@@ -106,7 +106,7 @@ const post = <T extends keyof APIs.Params, P extends APIs.Params[T]>(
 	return instance.post(ApiEndPoint.getURL(), param, config);
 };
 
-const get = <T extends keyof APIs.Params, P extends APIs.Params[T]>(
+const get = <T extends keyof Params, P extends Params[T]>(
 	action: T,
 	param: P,
 ) => {
@@ -119,7 +119,7 @@ const get = <T extends keyof APIs.Params, P extends APIs.Params[T]>(
 	return instance.get(ApiEndPoint.getURL(), config);
 };
 
-const postImage = <T extends keyof APIs.Params, P extends APIs.Params[T]>(
+const postImage = <T extends keyof Params, P extends Params[T]>(
 	action: T,
 	param: P,
 ) => {
