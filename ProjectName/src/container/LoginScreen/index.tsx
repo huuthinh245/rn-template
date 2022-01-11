@@ -11,13 +11,13 @@ const SplashScreen: React.FC<Props> = props => {
 	const {} = props;
 	const dispatch = useDispatch();
 	const onLogin = () => {
-		dispatch(actions.login({username: 'huuthinh245'}));
+		dispatch(actions.login({username: 'aaa'}));
 	};
 
 	const onProfile = () => {
 		let token = '123456';
 		let id = '1';
-		dispatch(actions.login({username: 'huuthinh245'}));
+		dispatch(actions.login({username: 'aaa'}));
 		UserApi.getProfile(token, id)
 			.then(() => {})
 			.catch(() => {});
