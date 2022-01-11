@@ -1,5 +1,10 @@
 ## install
-  npx react-native init AppName --template https://github.com/huuthinh245/rn-template.git
+  -npx react-native init AppName --template https://github.com/huuthinh245/rn-template.git
+## Use library
+  -react navigation
+  -redux observable
+  -react-native-config
+  -axios
 ## structure
 ```
   src/
