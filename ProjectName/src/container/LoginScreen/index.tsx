@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {SplashScreenParam} from 'screens';
-import {actions, UserApi} from 'stores/user';
+import {actions, UserApi} from '@stores/user';
 import {styles} from './styles';
 
 type Props = SplashScreenParam & {};

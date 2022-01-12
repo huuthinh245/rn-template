@@ -44,6 +44,7 @@
       "@components/*": ["src/components/*"],
       "@container/*": ["./src/container/*"],
       "@stores": ["./src/stores"],
+      "@stores/*": ["./src/stores/*"],
       "@constants/*": ["./src/constants/*"],
       "@network/*":["./src/network/*"],
       "@navigation/*":["./src/navigation/*"],
