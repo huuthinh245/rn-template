@@ -11,19 +11,15 @@ export const navigationRef =
  */
 
 const navigate = <
-	T extends keyof RootStackParamList,
-	P extends RootStackParamList[T],
+RouteName extends keyof RootStackParamList,
 >(
-	routeName: T,
-	params?: P | undefined,
-	callback?: () => void,
+	...arg: undefined extends RootStackParamList[RouteName] ? 
+	[routeName: RouteName,params?: RootStackParamList[RouteName], callback?:() => void]
+	: [routeName: RouteName,params: RootStackParamList[RouteName],callback?:() => void]
 ) => {
-	if (callback) {
-		callback();
-	}
 	navigationRef.current?.navigate(
-		routeName as keyof RootStackParamList,
-		params,
+		arg[0] as keyof RootStackParamList,
+		arg[1] ? arg[1]: undefined
 	);
 };
 
