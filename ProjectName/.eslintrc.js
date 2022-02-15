@@ -8,5 +8,6 @@ module.exports = {
 		'@typescript-eslint/no-shadow': ['error'],
 		semi: 'off',
 		'@typescript-eslint/semi': ['error'],
+		'no-mixed-spaces-and-tabs': 0,
 	},
 };

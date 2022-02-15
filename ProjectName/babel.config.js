@@ -14,7 +14,8 @@ module.exports = {
 					'.json',
 				],
 				alias: {
-					tests: ['./tests'],
+					tests: ['./tests/'],
+					'@common': './src/common',
 					'@components': './src/components',
 					'@container': './src/container',
 					'@stores': './src/stores',

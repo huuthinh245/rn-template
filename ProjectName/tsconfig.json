@@ -41,7 +41,9 @@
     "paths": {
       "*": ["src/*"],
       "tests": ["tests/*"],
-      "@components/*": ["src/components/*"],
+      "@common": [".src/common"],
+      "@common/*": [".src/common/*"],
+      "@components/*": [".src/components/*"],
       "@container/*": ["./src/container/*"],
       "@stores": ["./src/stores"],
       "@stores/*": ["./src/stores/*"],

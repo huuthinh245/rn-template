@@ -10,16 +10,22 @@ export const navigationRef =
  * @param [params] Params object for the route.
  */
 
-const navigate = <
-RouteName extends keyof RootStackParamList,
->(
-	...arg: undefined extends RootStackParamList[RouteName] ? 
-	[routeName: RouteName,params?: RootStackParamList[RouteName], callback?:() => void]
-	: [routeName: RouteName,params: RootStackParamList[RouteName],callback?:() => void]
+const navigate = <RouteName extends keyof RootStackParamList>(
+	...arg: undefined extends RootStackParamList[RouteName]
+		? [
+				routeName: RouteName,
+				params?: RootStackParamList[RouteName],
+				callback?: () => void,
+		  ]
+		: [
+				routeName: RouteName,
+				params: RootStackParamList[RouteName],
+				callback?: () => void,
+		  ]
 ) => {
 	navigationRef.current?.navigate(
 		arg[0] as keyof RootStackParamList,
-		arg[1] ? arg[1]: undefined
+		arg[1] ? arg[1] : undefined,
 	);
 };
 

@@ -67,7 +67,7 @@ class ApiEndPoint {
 			case APIs.Profile.upload_image:
 				return {
 					'Content-Type': 'multipart/form-data',
-					'Accept': 'application/json',
+					Accept: 'application/json',
 				};
 			default:
 				return {
