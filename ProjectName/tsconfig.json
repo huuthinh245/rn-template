@@ -37,13 +37,10 @@
 
     /* Module Resolution Options */
     "moduleResolution": "node",               /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
+    "baseUrl": ".",                       /* Base directory to resolve non-absolute module names. */
     "paths": {
-      "*": ["src/*"],
-      "tests": ["tests/*"],
-      "@common": [".src/common"],
-      "@common/*": [".src/common/*"],
-      "@components/*": [".src/components/*"],
+      "@common/*": ["./src/common/*"],
+      "@components/*": ["./src/components/*"],
       "@container/*": ["./src/container/*"],
       "@stores": ["./src/stores"],
       "@stores/*": ["./src/stores/*"],

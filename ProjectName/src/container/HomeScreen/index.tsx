@@ -6,7 +6,10 @@ import {styles} from './styles';
 type Props = HomeScreenParam & {};
 
 const HomeScreen: React.FC<Props> = memo(props => {
-	const {} = props;
+	const { navigation} = props;
+	const gg = () => {
+
+	}
 	return (
 		<View style={styles.container}>
 			<Text>HomeScreen</Text>

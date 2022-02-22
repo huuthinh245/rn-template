@@ -5,7 +5,7 @@ import {actions} from '../action/actions';
 import API from '../api';
 import {AuthAction, LoginType} from '../types';
 import {isOfType} from 'typesafe-actions';
-import {IRootState} from 'stores';
+import { IRootState } from '@stores';
 
 const loginUserEpic: Epic<AuthAction, AuthAction, IRootState> = action$ =>
 	action$.pipe(
