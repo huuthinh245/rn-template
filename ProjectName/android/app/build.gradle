@@ -138,7 +138,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId project.env.get("APP_ID")
+        applicationId "com.projectname"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -182,10 +182,12 @@ android {
         production {
             applicationIdSuffix ''
             resValue "string", "app_name", "Production"
+              resValue "string", "build_config_package", "com.projectname"
         }
         staging {
             applicationIdSuffix '.staging'
             resValue "string", "app_name", "Staging"
+            resValue "string", "build_config_package", "com.projectname"
         }
     }
 

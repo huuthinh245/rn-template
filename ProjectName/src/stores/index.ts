@@ -45,4 +45,6 @@ const enhancer = composeEnhancers(
 );
 const store: Store<IRootState, any> = createStore(rootReducer, enhancer);
 epicMiddleware.run(rootEpic);
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 export default store;
