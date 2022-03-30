@@ -1,5 +1,7 @@
 ## install
-  - npx react-native init MyApp  --template https://github.com/huuthinh245/rn-template.git
+```
+  npx react-native init MyApp  --template https://github.com/huuthinh245/rn-template.git
+```
 ## Use library
   - react navigation
   - redux observable
